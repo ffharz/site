@@ -1,9 +1,18 @@
 # site-ffharz
+
+---
+
+**Diese Anleitung ist nicht mehr aktuell!**
+
+---
+
 site.conf für das Release  0.10.6/ v2018.2.x
 Und am ende fallen dann alle images für das target ar71xx-generic raus. das sind die wichtigsten.
 Für weitere targets füre einfach folgendes nach dem make aus:
+
 ## eigenes Image bauen
-```
+
+```bash
 git clone https://github.com/freifunk-gluon/gluon
 cd gluon
 git branch -a
@@ -17,20 +26,23 @@ cd gluon
 make update
 make GLUON_TARGET=$TARGET GLUON_BRANCHE=$BRANCH prepare image/$PROFILE
 ```
+
 Wenn ein komplette Architektur gebaut werden soll, dann sieht der Befehl wie folgt aus.
 
-```
+```bash
 make GLUON_TARGET=$TARGET GLUON_BRANCHE=$BRANCH
 ```
+
 Bei ar71xx-gernic muss noch die REGION mit gegeben werden.
 
-```
+```bash
 make GLUON_TARGET=$TARGET GLUON_BRANCHE=$BRANCH GLUON_REGION=eu
 ```
 
 Die Variabeln müssen entsprechend ersetzt werden! Ein `make all` sollte nicht verwendet werden!
 
 verfügbare `$TARGET` sind:
+
 - ar71xx-generic <- TP-Link und Ubqiuiti <- diverse
 - ar71xx-tiny <- WR841 usw. mit 4MB Flash
 - ar71xx-nand
@@ -51,6 +63,7 @@ verfügbare `$TARGET` sind:
 - sunix <- A20 aka Banana Pi
 
 verfügbare `$BRANCH` sind:
+
 - beta
 - experimental
 - stable
@@ -70,5 +83,4 @@ in CHANGELOG.md liegen die Info's zu den Änderungen!
 
 `make manifest GLUON_BRANCH=experimental GLUON_RELEASE=0.10.6~20190821`
 
-
-Buildpad: http://pad.harz.freifunk.net/p/gluon
+Buildpad: <http://pad.harz.freifunk.net/p/gluon>

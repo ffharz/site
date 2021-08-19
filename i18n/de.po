@@ -16,6 +16,15 @@ msgstr ""
 "Harz Knoten. Fülle das folgende Formular deinen Vorstellungen "
 "entsprechend aus und sende es ab."
 
+msgid "gluon-config-mode:domain"
+msgstr "Domain"
+
+msgid "gluon-config-mode:domain-select"
+msgstr ""
+"Hier hast du die Möglichkeit, die passende Domain zu wählen. "
+"Dein Knoten verbindet sich dann ausschließlich mit Knoten in deiner"
+"Domäne."
+
 msgid "gluon-config-mode:pubkey"
 msgstr ""
 "<p>Dies ist der öffentliche Schlüssel deines Freifunkknotens. Erst nachdem "
@@ -43,4 +52,3 @@ msgstr ""
 "Freifunk-Community findest du auf "
 "<a href=\"http://harz.freifunk.net/\">unserer Webseite</a>.</p>"
 "<p>Viel Spaß mit deinem Knoten und der Erkundung von Freifunk!</p>"
-
