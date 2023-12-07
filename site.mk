@@ -49,7 +49,7 @@ GLUON_MULTIDOMAIN=1
 #               web-wizard
 
 
-DEFAULT_GLUON_RELEASE := 2021.1~$(date  '+%Y%m')
+DEFAULT_GLUON_RELEASE := 2022.1.4~$(date  '+%Y%m')
 
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
