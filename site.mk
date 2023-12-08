@@ -1,53 +1,54 @@
+##	GLUON_FEATURES
+#		Specify Gluon features/packages to enable;
+#		Gluon will automatically enable a set of packages
+#		depending on the combination of features listed
+
+GLUON_FEATURES := \
+	autoupdater \
+	ebtables-filter-multicast \
+	ebtables-filter-ra-dhcp \
+	ebtables-limit-arp \
+	mesh-batman-adv-15 \
+	mesh-vpn-fastd \
+	respondd \
+	status-page \
+	web-advanced \      
+	web-wizard
+
+GLUON_FEATURES_standard := \
+  wireless-encryption-wpa3
+
+##	GLUON_SITE_PACKAGES
+#		Specify additional Gluon/OpenWrt packages to include here;
+#		A minus sign may be prepended to remove a packages from the
+#		selection that would be enabled by default or due to the
+#		chosen feature flags
+
 GLUON_SITE_PACKAGES := \
-        gluon-mesh-batman-adv-15 \
+        iwinfo \
+        ffharz-reboot \
+        ffharz-fastd \
+        ffho-node-tuning \
+        gluon-ssid-changer \
         gluon-alfred \
+        gluon-authorized-keys
+        gluon-config-mode-domain-select \
         gluon-respondd \
-        gluon-authorized-keys \
-        gluon-autoupdater \
-        gluon-config-mode-autoupdater \
+        gluon-neighbour-info \
+        gluon-node-info \
+        gluon-web-admin \
+        gluon-web-private-wifi \
+        gluon-web-wifi-config \
+        gluon-web-network \ 
+        gluon-setup-mode \
         gluon-config-mode-contact-info \
         gluon-config-mode-core \
         gluon-config-mode-geo-location \
         gluon-config-mode-hostname \
         gluon-config-mode-mesh-vpn \
-        gluon-ebtables-filter-multicast \
-        gluon-ebtables-filter-ra-dhcp \
-        gluon-web-admin \
-        gluon-web-autoupdater \
-        gluon-web-wifi-config \
-        gluon-web-network \
-        gluon-web-private-wifi \
-        gluon-web-node-role \
-        gluon-mesh-vpn-fastd \
-        gluon-radvd \
-        gluon-neighbour-info \
-        gluon-node-info \
-        gluon-setup-mode \
-        gluon-status-page \
-        gluon-status-page-mesh-batman-adv \
-        iptables \
-        iwinfo \
-        ffharz-reboot \
-        ffharz-fastd \
-        ffho-node-tuning \
-        gluon-config-mode-domain-select \
-        haveged iwinfo \
-        gluon-ssid-changer
+        gluon-radvd \        
 
 GLUON_MULTIDOMAIN=1
-
-#GLUON_FEATURES := \
-#               autoupdater \
-#               ebtables-filter-multicast \
-#               ebtables-filter-ra-dhcp \
-#               ebtables-limit-arp \
-#               mesh-batman-adv-15 \
-#               mesh-vpn-fastd \
-#               respondd \
-#               status-page \
-#               web-advanced \
-#               web-wizard
-
 
 DEFAULT_GLUON_RELEASE := 2022.1.4~$(date  '+%Y%m')
 
