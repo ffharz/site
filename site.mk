@@ -12,7 +12,7 @@ GLUON_FEATURES := \
 	mesh-vpn-fastd \
 	respondd \
 	status-page \
-	web-advanced \      
+	web-advanced \
 	web-wizard
 
 GLUON_FEATURES_standard := \
@@ -31,7 +31,7 @@ GLUON_SITE_PACKAGES := \
         ffho-node-tuning \
         gluon-ssid-changer \
         gluon-alfred \
-        gluon-authorized-keys
+        gluon-authorized-keys \
         gluon-config-mode-domain-select \
         gluon-respondd \
         gluon-neighbour-info \
@@ -39,14 +39,14 @@ GLUON_SITE_PACKAGES := \
         gluon-web-admin \
         gluon-web-private-wifi \
         gluon-web-wifi-config \
-        gluon-web-network \ 
+        gluon-web-network \
         gluon-setup-mode \
         gluon-config-mode-contact-info \
         gluon-config-mode-core \
         gluon-config-mode-geo-location \
         gluon-config-mode-hostname \
         gluon-config-mode-mesh-vpn \
-        gluon-radvd \        
+        gluon-radvd \
 
 GLUON_MULTIDOMAIN=1
 
