@@ -50,14 +50,16 @@ GLUON_SITE_PACKAGES := \
 
 GLUON_MULTIDOMAIN=1
 
-DEFAULT_GLUON_RELEASE := 2022.1.4~$(date  '+%Y%m')
+DEFAULT_GLUON_RELEASE := 2022.1.4~$(shell date  '+%Y%m%d')
 
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
 
 GLUON_PRIORITY ?= 0
-GLUON_BRANCH ?= experimental
-#export GLUON_BRANCH
+GLUON_AUTOUPDATER_BRANCH ?= experimental
+GLUON_AUTOUPDATER_ENABLED ?= 1
+
+GLUON_OUTPUTDIR ?= output/$(GLUON_RELEASE)/$(GLUON_AUTOUPDATER_BRANCH)
 
 GLUON_LANGS ?= de en
 GLUON_REGION = eu
