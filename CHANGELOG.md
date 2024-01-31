@@ -1,5 +1,17 @@
 # Changelog
 
+## 20240131
+
+- Cellular Modem Support für unterstzützte Geräte hinzugefügt (ab Gluon 2023.1)
+- Umstellung auf das mit Gluon 2023.2 eingeführte Image Anpassungsverfahren über die Datei image-customization.lua
+- Es werden nur noch sysupgrade images für nicht mehr unterstützte Geräte gebaut
+- Sprachdateien aktualisiert
+
+## 20231207
+
+- Anpassungen für 2022.1
+- neue FastD Methode null@l2tp hinzugefügt. Damit sollte der Tunnel wesentlich schneller sein.
+
 ## 20210819
 
 - Repo aufgeräumt, da dies lange nicht gepflegt wurde. Es fehlen viele Zwischenschritte!
