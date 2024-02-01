@@ -1,86 +1,49 @@
 # site-ffharz
 
----
-
-**Diese Anleitung ist nicht mehr aktuell!**
-
----
-
-site.conf für das Release  0.10.6/ v2018.2.x
-Und am ende fallen dann alle images für das target ar71xx-generic raus. das sind die wichtigsten.
-Für weitere targets füre einfach folgendes nach dem make aus:
+Hier findet sich die aktuelle Gluon-Site-Konfiguration vom Freifunk Harz.
+Eine genaue Anleitung zum Firmware backen und aktuelle Releaseinformationen findet man unter <https://gluon.readthedocs.io/en/latest/>
 
 ## eigenes Image bauen
 
 ```bash
-git clone https://github.com/freifunk-gluon/gluon
+git clone https://github.com/freifunk-gluon/gluon.git gluon -b RELEASE
 cd gluon
-git branch -a
-git checkout v2018.2.x
+git clone https://github.com/ffharz/site-ffharz.git site
 cd ..
-git clone https://github.com/ffharz/site-ffharz.git
-cp -r site-ffharz gluon/site
 git clone https://github.com/ffharz/gluon-package.git
 cp -r gluon-package/*-* gluon/package
 cd gluon
 make update
-make GLUON_TARGET=$TARGET GLUON_BRANCHE=$BRANCH prepare image/$PROFILE
-```
-
-Wenn ein komplette Architektur gebaut werden soll, dann sieht der Befehl wie folgt aus.
-
-```bash
-make GLUON_TARGET=$TARGET GLUON_BRANCHE=$BRANCH
-```
-
-Bei ar71xx-gernic muss noch die REGION mit gegeben werden.
-
-```bash
-make GLUON_TARGET=$TARGET GLUON_BRANCHE=$BRANCH GLUON_REGION=eu
+make GLUON_TARGET=$TARGET GLUON_AUTOUPDATER_BRANCHE=$BRANCH
 ```
 
 Die Variabeln müssen entsprechend ersetzt werden! Ein `make all` sollte nicht verwendet werden!
+Alle $TARGET können mithilfe einer Schleife gebaut werden (dauert lange!).
 
-verfügbare `$TARGET` sind:
+```bash
+for TARGET in $(make list-targets); do
+  make GLUON_TARGET=$TARGET
+done
+```
 
-- ar71xx-generic <- TP-Link und Ubqiuiti <- diverse
-- ar71xx-tiny <- WR841 usw. mit 4MB Flash
-- ar71xx-nand
-- brcm2708-bcm2708 <- Raspberry Pi 1
-- brcm2708-bcm2709 <- Raspberry Pi 2
-- brcm2708-bcm2710 <- Raspberry Pi 3
-- mpc85xx-generic
-- ramips-mt7621 <- D-Link DIR860L/E
-- x86-generic
-- x86-geode
-- x86-64
-- ar71xx-mikrotik
-- ipq806x
-- mvebu
-- ramips-mt7628
-- ramips-rt305x
-- x86-kvm_guest
-- sunix <- A20 aka Banana Pi
+Damit das Konsolenfenster (SSH) während des build-Vorganges geschlossen werden kann, kann der Befehl `nohup` (Ausgabeumleitung in Datei nohup.log) oder `screen` genutzt werden
 
-verfügbare `$BRANCH` sind:
+Die verfügbaren `$TARGET` für die jeweilige Gluon-Version findet man unter <https://gluon.readthedocs.io/en/latest/user/supported_devices.html>
 
-- beta
+Wir nutzen aktuell folgende `$BRANCH`:
+
 - experimental
 - stable
 
-verfügbare `$PROFILE` findest du unter `gluon\target\$TARGET\profiles.mk`
-
-in CHANGELOG.md liegen die Info's zu den Änderungen!
+In CHANGELOG.md liegen die Info's zu den Änderungen an der Site!
 
 ## Image signieren
 
 - ecdsautil muss installiert und eingerichtet werden, damit die Firmware signiert werden kann
-- das Manifest muss erstellt und dann signiert werden
+- das Manifest wird erstellt mit:
 
-`make manifest GLUON_BRANCH=experimental`
+    `make manifest GLUON_BRANCH=experimental`
 
-- wenn build länger zurückliegt muss das Release Datum mit `GLUON_RELEASE` mit angegeben werden
+- anschließend kann es mit folgendem Befehl signiert werden:
 
-`make manifest GLUON_BRANCH=experimental GLUON_RELEASE=0.10.6~20190821`
-
-Buildpad: <http://pad.harz.freifunk.net/p/gluon>
+    `contrib/sign.sh $SECRET output/$RELEASE/$BRANCH/images/sysupgrade/$BRANCH.manifest`
